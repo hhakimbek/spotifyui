@@ -93,7 +93,7 @@ class _HomeScreenState extends State<HomeScreen> {
           },
         ),
         title: Row(
-          spacing: 10,
+          spacing: 8,
           children: [
             ...List.generate(appBarButtons.length, (index) {
               return GestureDetector(
@@ -102,8 +102,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   setState(() {});
                 },
                 child: Container(
-                  height: 35,
-                  padding: EdgeInsetsGeometry.symmetric(horizontal: 15),
+                  height: 30,
+                  padding: EdgeInsetsGeometry.symmetric(horizontal: 20),
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadiusGeometry.circular(16),
@@ -183,11 +183,11 @@ class _HomeScreenState extends State<HomeScreen> {
                             borderRadius: BorderRadiusGeometry.circular(15),
                             clipBehavior: Clip.hardEdge,
                             child: SizedBox(
-                              height: 170,
+                              height: 150,
                               child: Row(
                                 children: [
                                   Expanded(
-                                    flex: 10,
+                                    flex: 12,
                                     child: ColoredBox(
                                       color: Colors.black,
                                       child: WaveWidget(

@@ -14,11 +14,11 @@ class Slim extends StatelessWidget {
       child: Row(
         children: [
           Expanded(
-            flex: 1,
+            flex: 12,
             child: Image.asset("$IMAGE_PATH/slim_$index.png",height: 56,fit: BoxFit.cover,),
           ),
           Expanded(
-            flex: 2,
+            flex: 20,
             child: ColoredBox(
               color: Theme.of(context).colorScheme.secondary,
               child: Padding(
