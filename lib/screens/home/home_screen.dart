@@ -17,65 +17,60 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int appBarButton = 0;
   List<String> appBarButtons = ["All", "Music", "Podcasts"];
+  final GlobalKey<ScaffoldState> homeKey = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: homeKey,
       drawer: Drawer(
-        child: SafeArea(
-          child: Column(
-            crossAxisAlignment: .start,
-            children: [
-              20.height,
-              Padding(
-                padding: EdgeInsetsGeometry.symmetric(horizontal: 16),
-                child: Row(
-                  spacing: 10,
+        child: ListView(
+          padding: const EdgeInsets.symmetric(horizontal: 16,vertical: 20),
+          children: [
+            const SizedBox(height: 20),
+            Row(
+              children: [
+                AvatarWidget(
+                  height: 50,
+                  child: Image.asset(
+                    IMAGE_PATH + AVATAR,
+                    height: 50,
+                    width: 50,
+                  ),
+                ),
+                const SizedBox(width: 10),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    AvatarWidget(
-                      height: 50,
-                      child: Image.asset(
-                        IMAGE_PATH + AVATAR,
-                        height: 50,
-                        width: 50,
-                      ),
+                    Text(
+                      "Damon98",
+                      style: Theme.of(context).textTheme.titleLarge,
                     ),
-                    Column(
-                      crossAxisAlignment: .start,
-                      children: [
-                        Text(
-                          "Damon98",
-                          style: Theme.of(
-                            context,
-                          ).textTheme.titleLarge!.copyWith(fontSize: 19),
-                        ),
-                        Text(
-                          "View profile",
-                          style: Theme.of(
-                            context,
-                          ).textTheme.bodySmall!.copyWith(color: Colors.grey),
-                        ),
-                      ],
+                    Text(
+                      "View profile",
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodySmall!
+                          .copyWith(color: Colors.grey),
                     ),
                   ],
                 ),
-              ),
-              Divider(height: 30, color: Colors.grey.shade900),
-              ListTile(
-                leading: Icon(CupertinoIcons.lightbulb),
-                title: Text("What's new"),
-              ),
-              ListTile(
-                leading: Icon(CupertinoIcons.timer),
-                title: Text("Listening history"),
-              ),
-              ListTile(
-                leading: Icon(Icons.settings),
-                title: Text("Settings and privacy"),
-              ),
-            ],
-          ),
+              ],
+            ),
+            Divider(height: 30, color: Colors.grey.shade900),
+            const ListTile(
+              leading: Icon(CupertinoIcons.lightbulb),
+              title: Text("What's new"),
+            ),
+            const ListTile(
+              leading: Icon(CupertinoIcons.timer),
+              title: Text("Listening history"),
+            ),
+            const ListTile(
+              leading: Icon(Icons.settings),
+              title: Text("Settings and privacy"),
+            ),
+          ],
         ),
       ),
       appBar: AppBar(
@@ -103,7 +98,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 },
                 child: Container(
                   height: 30,
-                  padding: EdgeInsetsGeometry.symmetric(horizontal: 20),
+                  padding: EdgeInsets.symmetric(horizontal: 20),
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadiusGeometry.circular(16),
@@ -126,9 +121,8 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
       body: Padding(
-        padding: EdgeInsetsGeometry.symmetric(horizontal: 14),
-        child: true
-            ? CustomScrollView(
+        padding: EdgeInsets.symmetric(horizontal: 14),
+        child: CustomScrollView(
                 slivers: [
                   SliverGrid(
                     gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
@@ -158,7 +152,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ),
                               ),
                               Column(
-                                crossAxisAlignment: .start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
                                     "New release from",
@@ -218,7 +212,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       child: Padding(
                                         padding: EdgeInsets.all(15),
                                         child: Column(
-                                          crossAxisAlignment: .start,
+                                          crossAxisAlignment: CrossAxisAlignment.start,
                                           children: [
                                             Text(
                                               "I Wanna Be Yours",
@@ -267,7 +261,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   SliverToBoxAdapter(
                     child: Column(
-                      crossAxisAlignment: .start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         20.height,
                         Text(
@@ -296,7 +290,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                           width: 160,
                                         ),
                                         Column(
-                                          crossAxisAlignment: .start,
+                                          crossAxisAlignment: CrossAxisAlignment.start,
                                           children: [
                                             Text(
                                               "Rock Mix",
@@ -344,7 +338,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   SizedBox(
                                     width: 160,
                                     child: Column(
-                                      crossAxisAlignment: .start,
+                                      crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
                                         Image.asset(
                                           "$IMAGE_PATH/episode_$index.png",
@@ -353,7 +347,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                           width: 160,
                                         ),
                                         Column(
-                                          crossAxisAlignment: .start,
+                                          crossAxisAlignment: CrossAxisAlignment.start,
                                           children: [
                                             Text(
                                               "Yeh Last Great debate",
@@ -423,7 +417,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     SizedBox(
                                       width: 130,
                                       child: Column(
-                                        crossAxisAlignment: .start,
+                                        crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
                                           Image.asset(
                                             "$IMAGE_PATH/recently_$index.png",
@@ -469,65 +463,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ],
               )
-            : SingleChildScrollView(
-                child: Column(
-                  children: [
-                    //slim grid
-                    GridView.builder(
-                      physics: NeverScrollableScrollPhysics(),
-                      shrinkWrap: true,
-                      itemCount: 8,
-                      gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                        maxCrossAxisExtent: 175,
-                        mainAxisExtent: 56,
-                        mainAxisSpacing: 10,
-                        crossAxisSpacing: 10,
-                      ),
-                      itemBuilder: (context, index) {
-                        return Slim(index: index);
-                      },
-                    ),
-                    //recomended card
-                    SizedBox(
-                      child: Column(
-                        children: [
-                          Row(
-                            spacing: 10,
-                            children: [
-                              AvatarWidget(
-                                height: 50,
-                                child: Image.asset(
-                                  IMAGE_PATH + AVATAR,
-                                  height: 50,
-                                ),
-                              ),
-                              Column(
-                                crossAxisAlignment: .start,
-                                children: [
-                                  Text(
-                                    "New release from",
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .bodySmall!
-                                        .copyWith(color: Colors.grey),
-                                  ),
-                                  Text(
-                                    "Arctic Monkeys",
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .titleLarge!
-                                        .copyWith(fontSize: 19),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
       ),
     );
   }

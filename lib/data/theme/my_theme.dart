@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class MyTheme {
   static ThemeData darkTheme = ThemeData(
     scaffoldBackgroundColor: Color(0xFF121212),
-    textTheme: TextTheme(
+    textTheme: ThemeData.dark().textTheme.copyWith(
       titleLarge: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
       titleMedium: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
       bodySmall: TextStyle(fontSize: 11, fontWeight: FontWeight.w500),

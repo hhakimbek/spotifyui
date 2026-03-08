@@ -5,4 +5,3 @@ const LOGO = "/logo.png";
 const LOGO_WHITE = "/logo_white.png";
 const AVATAR = "/user_avatar.png";
 
-final GlobalKey<ScaffoldState> homeKey = GlobalKey();
